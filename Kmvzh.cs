@@ -23,11 +23,11 @@ namespace Матмоделирование_практика
                 vih.Clear();
             }
             int max = 2147483647, maxind = 0;
-            foreach(List<Sturla> st in fnlcn)
+            foreach (List<Sturla> st in fnlcn)
             {
-                if(AllPoints(ls, st))
+                if (AllPoints(ls, st))
                 {
-                    if(FnlMv(st)<=max)
+                    if (FnlMv(st) <= max)
                     {
                         max = FnlMv(st);
                         maxind = fnlcn.IndexOf(st);
@@ -110,19 +110,19 @@ namespace Матмоделирование_практика
                     }
                 }
             }
-            for(int i = 0; i<ret.Count; i++)
+            for (int i = 0; i < ret.Count; i++)
             {
-                if(i>0)
+                if (i > 0)
                 {
-                    if(ret[i][0].point1 != ret[i][ret[i].Count-1].point2)
+                    if (ret[i][0].point1 != ret[i][ret[i].Count - 1].point2)
                     {
                         ret[i].InsertRange(0, ret[i - 1].FindAll(x => ret[i - 1].IndexOf(x) <= ret[i - 1].FindIndex(y => y.point2 == ret[i][0].point1)));
                     }
                 }
             }
-            foreach(List<Sturla> rt in ret)
+            foreach (List<Sturla> rt in ret)
             {
-                if(AllPoints(ls, rt))
+                if (AllPoints(ls, rt))
                 {
                     return rt;
                 }
@@ -151,9 +151,9 @@ namespace Матмоделирование_практика
                         string[] str2 = str1[i].Split(';');
                         for (int j = 0; j < str2.Length; j++)
                         {
-                            if (str2[j]!="" && Convert.ToInt32(str2[j]) != 0)
+                            if (str2[j] != "" && Convert.ToInt32(str2[j]) != 0)
                             {
-                                ret.Add(new Sturla { point1 = i+1, point2 = j+1, length = Convert.ToInt32(str2[j]) });
+                                ret.Add(new Sturla { point1 = i + 1, point2 = j + 1, length = Convert.ToInt32(str2[j]) });
                             }
                         }
                     }
@@ -165,18 +165,18 @@ namespace Матмоделирование_практика
         {
             bool ret = true;
             List<int> pointmas = new List<int>();
-            foreach(Sturla st in ls)
+            foreach (Sturla st in ls)
             {
-                if(!pointmas.Contains(st.point1))
+                if (!pointmas.Contains(st.point1))
                 {
                     pointmas.Add(st.point1);
                 }
-                else if(!pointmas.Contains(st.point2))
+                else if (!pointmas.Contains(st.point2))
                 {
                     pointmas.Add(st.point2);
                 }
             }
-            foreach(int t in pointmas)
+            foreach (int t in pointmas)
             {
                 if (!ks.Contains(ks.Find(x => x.point1 == t || x.point2 == t)))
                     ret = false;

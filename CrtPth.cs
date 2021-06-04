@@ -32,7 +32,7 @@ namespace Матмоделирование_практика
             }
             using (StreamWriter sr = new StreamWriter("Итог.txt"))
             {
-                foreach(Rbt rb in fnlcn[maxind])
+                foreach (Rbt rb in fnlcn[maxind])
                 {
                     sr.WriteLine(rb.point1 + " - " + rb.point2);
                 }
@@ -103,27 +103,6 @@ namespace Матмоделирование_практика
             }
             return ret;
         }
-        int Mv(List<Rbt> ls, Rbt minel, StreamWriter sr)
-        {
-            int ret = 0;
-            Rbt rb = ls.Find(x => x.point1 == minel.point1 && x.point2 == minel.point2);
-            sr.WriteLine(rb.point1 + " - " + rb.point2);
-            if (rb.point2 == ls[Maxel(ls)].point2)
-            {
-                return rb.length;
-            }
-            else
-            {
-                for (int i = 0; i < ls.Count; i++)
-                {
-                    if (ls[i].point1 == rb.point2)
-                    {
-                        ret = Mv(ls, ls[i], sr) + rb.length;
-                    }
-                }
-            }
-            return ret;
-        }
         List<Rbt> Flrd(string path)
         {
             List<Rbt> ret = new List<Rbt>();
@@ -142,7 +121,7 @@ namespace Матмоделирование_практика
         {
             List<List<Rbt>> ret = new List<List<Rbt>>();
             string[] str1 = s.Split(';');
-            foreach(string st1 in str1)
+            foreach (string st1 in str1)
             {
                 if (st1 != "")
                 {
@@ -169,9 +148,9 @@ namespace Матмоделирование_практика
                 }
             }
             int max = ret[0][0].length, maxind = 0;
-            for(int i = 0; i<ret.Count; i++)
+            for (int i = 0; i < ret.Count; i++)
             {
-                if(FnlMv(ret[i])>=max)
+                if (FnlMv(ret[i]) >= max)
                 {
                     max = FnlMv(ret[i]);
                     maxind = i;
@@ -182,7 +161,7 @@ namespace Матмоделирование_практика
         int FnlMv(List<Rbt> ls)
         {
             int ret = 0;
-            foreach(Rbt rb in ls)
+            foreach (Rbt rb in ls)
             {
                 ret += rb.length;
             }

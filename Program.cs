@@ -7,7 +7,8 @@ namespace Матмоделирование_практика
     {
         static void Main(string[] args)
         {
-            Kmvzh km = new Kmvzh("Коммивояжёр.csv");
+            vvodZnach vz = new vvodZnach();
+            vz.simplexBol();
         }
     }
 }

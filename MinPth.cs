@@ -23,11 +23,11 @@ namespace Матмоделирование_практика
             int max = 2147483647, maxind = 0;
             foreach (List<Sturla> st in fnlcn)
             {
-                    if (FnlMv(st) <= max)
-                    {
-                        max = FnlMv(st);
-                        maxind = fnlcn.IndexOf(st);
-                    }
+                if (FnlMv(st) <= max)
+                {
+                    max = FnlMv(st);
+                    maxind = fnlcn.IndexOf(st);
+                }
             }
             using (StreamWriter sr = new StreamWriter("КороткаяДорога.txt"))
             {
